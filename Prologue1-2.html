@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Les Voix de l'Opera</title>
+        <link rel="icon" type="image/png" href="icon.png" />
+        <link rel="stylesheet" href="style/screen.css">
+    </head>
+    <body>
+        <audio loop id="music" preload="auto" style="display: none">
+            <source src="audio/Toccata.mp3" type="audio/mp3">
+        </audio>
+        <a href="index.html"><img src="images/Prologue_1-1/Logo.png" alt="" id="Logo"></a>
+       
+        <script src="js/three.js"></script>
+        <script src="js/TweenLite.js"></script>
+        <script src="js/prologue1-2.js"></script>
+        <button  class="btn Follow-Emma" onclick="scene1()"></button>
+        <script>
+            function scene1(){
+                window.location.assign("scene1-0.html")
+            }
+        </script>
+    </body>
+</html>

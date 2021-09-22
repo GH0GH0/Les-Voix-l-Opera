@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" type="image/png" href="icon.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/scene1-1.js"></script>
+    <title>Les Voix de l'Opera</title>
+</head>
+<body>
+  <audio src="audio/ambiance grande scène.wav" autoplay></audio>
+  <audio id="Verre2">
+    <source src="audio/Verre 2.wav" type="audio/wav">
+  </audio>
+  <audio id="Verre1">
+    <source src="audio/Verre 1.wav" type="audio/wav">
+  </audio>
+  <audio id="Verre3">
+    <source src="audio/Verre 3.wav" type="audio/wav">
+  </audio>
+    <div id="dropZone" >
+        <div
+          id="dropBox1"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+         
+        >
+         
+        </div>
+        <div
+          id="dropBox2"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+          data="2"
+        >
+        </div>
+        <div
+          id="dropBox3"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+         
+        >
+        </div>
+        <div
+          id="dropBox4"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+          
+        >
+        </div>
+      </div>
+      
+      <div
+        id="animals"
+        ondrop="drop(event)"
+        ondragover="allowDrop(event)"
+      >
+        <img
+          id="2"
+          src="images/scene1-1/puzzle/pièce-1.png"
+          draggable="true"
+          ondragstart="drag(event)"
+          width="100%"
+          height="100%"
+        />
+      
+        <img
+          id="1"
+          src="images/scene1-1/puzzle/Puzzle-2.png"
+          draggable="true"
+          ondragstart="drag(event)"
+          width="100%"
+          height="100%"
+        />
+      
+        <img
+          id="3"
+          src="images/scene1-1/puzzle/puzzle-3.png"
+          draggable="true"
+          ondragstart="drag(event)"
+          width="100%"
+          height="100%"
+        />
+      
+        <img
+          id="4"
+          src="images/scene1-1/puzzle/puzzle-4.png"
+          draggable="true"
+          ondragstart="drag(event)"
+          width="100%"
+          height="100%"
+        />
+      </div>
+      <div id="Finish" >
+        <h1 id="Phrase"></h1> 
+        <button id="next" onclick="Erick()"></button>
+        
+      </div>
+      <script>
+        function Erick(){
+                    window.location.assign("scene-Eric.html")
+                }
+      </script>
+</body>
+</html>

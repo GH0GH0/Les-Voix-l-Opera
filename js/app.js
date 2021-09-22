@@ -27,24 +27,29 @@ class Scene {
         this.sphere = new THREE.Mesh( geometry, material )
         this.scene.add(this.sphere )
         this.points.forEach(this.addTooltip.bind(this))
+        
     }
     addPoint (point){
         this.points.push(point)
     }
-    addTooltip (point) {
+    addTooltip (point){
         let spriteMap = new THREE.TextureLoader().load('src/sprite.png' )
         let spriteMaterial = new THREE.SpriteMaterial( { map: spriteMap } )
         let sprite = new THREE.Sprite( spriteMaterial )
         sprite.name = point.name
         sprite.position.copy(point.position.clone().normalize().multiplyScalar(30))
         sprite.scale.multiplyScalar(2)
+        // sprite.add(sound)
         this.scene.add( sprite )
+        
         this.sprites.push(sprite)
+        
         sprite.onClick = () => {
             this.destroy()
             point.scene.creatScene(scene)
             point.scene.appear()
         }
+       
     }
     
     destroy(){
@@ -100,27 +105,63 @@ class Scene {
 
 //scene
 const scene = new THREE.Scene()
-const camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 200 )
-camera.position.set( -1, 0, 0 )
+const camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 )
+camera.position.set( 0, 0, 0 )
 
+camera.lookAt(10,0,0)
 //sphere & texture
 
-let s = new Scene('src/PMXXHF.jpeg', camera)
-let s2 = new Scene('src/beach.jpeg', camera)
+let s = new Scene('images/Prologue_1-1/Opéra extérieur 360°.jpg', camera)
+let s2 = new Scene('src/opera2.jpg', camera)
 s.creatScene(scene)
-s.addPoint({
-    position :new THREE.Vector3( 15.951458283952752,  -6.737922202329347,  46.62566306258581),
-    name : 'Lac',
-    scene :s2
-})
-s2.addPoint({
-    position :new THREE.Vector3( -48.8435714053572,  -6.433021337374599,  -6.989345853329852),
-    name : 'Pont',
-    scene :s
-})
-s.creatScene(scene)
-s.appear
 
+s.appear
+camera.position.z = 5;
+
+
+
+
+
+
+
+       const geometry = new THREE.BoxGeometry();
+			const material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+            const cube = new THREE.Mesh( geometry, material );
+            const position = new THREE.Vector3( 0,40,0)
+            cube.position.copy(position)
+            cube.scale.multiplyScalar(3)
+         
+            scene.add(cube)
+            // cube.position.y +=  speed * delta;
+            console.log(cube.position.x);
+
+
+
+            // const animate = function () {
+			// 	requestAnimationFrame( animate );
+
+				
+
+			// 	renderer.render( scene, camera );
+            // };
+            
+            // animate();
+            //create an AudioListener and add it to the camera
+const listener = new THREE.AudioListener();
+camera.add( listener );
+
+// create the PositionalAudio object (passing in the listener)
+const sound = new THREE.PositionalAudio( listener );
+
+// load a sound and set it as the PositionalAudio object's buffer
+const audioLoader = new THREE.AudioLoader();
+audioLoader.load( 'audio/Prologue 1-1 Audio Guide.wav', function( buffer ) {
+	sound.setBuffer( buffer );
+    sound.setRefDistance(30 );
+    // sound.setDirectionalCone( 180, 230, 0.1 );
+  sound.play();
+});
+cube.add(sound)
 //rendu
 const renderer = new THREE.WebGLRenderer()
 renderer.setSize( window.innerWidth, window.innerHeight )
@@ -129,13 +170,22 @@ container.appendChild( renderer.domElement )
 //controls
 const controls = new THREE.OrbitControls( camera, renderer.domElement );
 controls.rotateSpeed = 0.2
-controls.enableZoom = false
+controls.minDistance = 20;
+controls.maxDistance = 40;
+// controls.minAzimuthAngle = - 0.2; // radians
+// controls.maxAzimuthAngle = 0.2; // radians
 controls.update()
 
 
 
+
+
 function animate() {
-	requestAnimationFrame( animate )
+    requestAnimationFrame( animate )
+  //  cube.position.y -= 0.09;
+    // console.log(cube.position.y)
+    // console.log(camera.position)
+    
 	renderer.render( scene, camera )
 }
 animate()
@@ -159,13 +209,12 @@ let mouse = new THREE.Vector2(
             intersect.object.onClick()
         }
     })
-    console.log(intersects)
+   
     /** script pour la detection de position d'un click de souris **/
  
-    // if (intersects.length > 0){
-    //     console.log(intersects[0].point)
-        
-    // }
+    if (intersects.length > 0){
+        console.log(intersects[0].point)
+    }
     
 }
 
@@ -186,12 +235,14 @@ function onMouseMove(e){
             tooltip.innerHTML = intersect.object.name;
             spriteActive = intersect.object
             foundSprite = true
-            
+                    // play the audio
+                    //  oceanAmbientSound.play()
         }
     })
+    
     if(foundSprite===false && spriteActive){
         tooltip.classList.remove('is-active')
-        
+
         spriteActive= false
     }
 }

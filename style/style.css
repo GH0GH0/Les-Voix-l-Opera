@@ -1,0 +1,86 @@
+
+html {
+  background: url('../images/scene1-1/puzzle/puzzle.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#dropBox1,
+#dropBox2,
+#dropBox3,
+#dropBox4 {
+  display: flex;
+  /* flex-flow: column nowrap; */
+  justify-content: start;
+  align-items: baseline;
+  height: 250px;
+  width: 250px;
+  
+ 
+}
+img {
+  height: 100%;
+  object-fit: cover;
+  width: 10%;
+}
+#dropBox1{
+    position: absolute;
+    top: 47%;
+    left: 51.79%;
+    width: 7%;
+    height: 19%;
+}
+#dropBox2{
+    position: absolute;
+    top: 38%;
+    left: 48.6%;
+    width: 10.5%;
+    height: 26%;
+}
+#dropBox3{
+    position: absolute;
+    top: 43.1%;
+    left: 45.99%;
+    height: 19%;
+    width: 9%;
+}
+#dropBox4 {
+  position: absolute;
+  top: 41.7%;
+  left: 38.9%;
+  width: 13%;
+  height: 19.4%;
+
+}
+#Finish{
+  
+}
+#Phrase{
+  background-image: url(../images/scene1-1/Chaise/phrase.png);
+    width: 94%;
+    position: absolute;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    bottom: 2%;
+}
+#next{
+  background: url(../images/scene1-1/next.png);
+  width: 3%;
+  position: absolute;
+  height: 6%;
+  bottom: 5%;
+  background-repeat: no-repeat;
+  right: 9%;
+  border: none;
+  outline: none;
+  background-size: contain;
+}
+#next:hover{
+  background: url(../images/scene1-1/next_click.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
