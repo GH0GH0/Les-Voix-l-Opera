@@ -39,7 +39,6 @@ class Scene {
         sprite.name = point.name
         sprite.position.copy(point.position.clone().normalize().multiplyScalar(30))
         sprite.scale.multiplyScalar(2)
-        // sprite.add(sound)
         this.scene.add( sprite )
         
         this.sprites.push(sprite)
@@ -131,7 +130,7 @@ camera.position.z = 5;
             cube.position.copy(position)
             cube.scale.multiplyScalar(3)
          
-            scene.add(cube)
+            // scene.add(cube)
             // cube.position.y +=  speed * delta;
             console.log(cube.position.x);
 
